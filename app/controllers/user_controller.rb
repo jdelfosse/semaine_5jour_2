@@ -11,7 +11,7 @@ class UserController < ApplicationController
 #		User.create(username: @user_params[:username], email: @user_params[:email], bio: @user_params[:bio])
 		redirect_to "/user/new"
   	end
-end
+
 
   def redirect
 		redirect_to "/user/new"
