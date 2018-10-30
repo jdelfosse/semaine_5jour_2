@@ -1,0 +1,42 @@
+<h1>Creation des utilisateur</h1>
+<p>Find me in app/views/user/new.html.erb</p>
+<form action="create" method="POST">
+
+  <p>username<input type="string" name="username"></p>
+  <p>email<input type="string" name="email"></p>
+  <p>bio<input type="text" name="bio"></p>
+
+  <input type="submit" value="Envoyer le formulaire">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+</form>
+
+
+<h3>this is form tag, meilleur prise en main/controle que le classic form</h3>
+
+<%= form_tag do %>
+  <%= label_tag(:username, "Username:") %>  <!-- "Username" représente le nom devant la case -->
+  <%= text_field_tag(:username) %> <br/> <!-- :username représente l'attribut qui sera rempli-->
+  <%= label_tag(:email, "Email:") %>
+  <%= text_field_tag(:email) %><br/>
+  <%= label_tag(:bio, "Bio:") %>
+  <%= text_field_tag(:bio) %><br/>
+  <%= submit_tag("FUCK LE CSS here") %><br/><br/><br/>
+<% end %>
+
+<h3>le form for s'adresse directement aux model (ici : user, définir par @user dans méthode new)</h3>
+
+<%= form_for @user, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
+  Username :<%= f.text_field :username %><br/>
+  Email :<%= f.text_field :email %><br/><br/><br/>
+  Question : quelle est votre idée de projet final ? <br />  <%= f.text_area :bio, size: "42x4.2" %><br/>
+  <%= f.submit "Create" %><br/>
+<% end %>
+
+
+<div id="gossip_container">
+	<% @user_id = 1 %>
+	<% @all_users.each do |user| %>
+	<p> <%= user[:username] %> <%= user[:email] %> <%= user[:bio] %></p>
+	<% @user_id += 1 %>
+	<% end %>
+</div>
