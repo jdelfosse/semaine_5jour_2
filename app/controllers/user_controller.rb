@@ -12,3 +12,8 @@ class UserController < ApplicationController
 		redirect_to "/user/new"
   	end
 end
+
+  def redirect
+		redirect_to "/user/new"
+  	end
+end
